@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  background: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-icons i {
+  margin-left: 8px;
+}
+
+.profile-icon i {
+  font-size: 1.5rem;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wealth-circle {
+  margin-top: 2rem;
+  width: 200px;
+  height: 200px;
+  border: 8px solid #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.wealth-circle button {
+  background: none;
+  border: none;
+  color: #fff;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.card-section {
+  margin-top: 2rem;
+  background: #222;
+  padding: 1rem;
+  border-radius: 8px;
+  width: 80%;
+  text-align: center;
+}
+
+.insights {
+  margin-top: 2rem;
+  width: 80%;
+}
+
+.insight-card {
+  background: #333;
+  border-radius: 8px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.insight-card i {
+  font-size: 2rem;
+}
+
+footer {
+  background: #111;
+  padding: 0.5rem;
+}
+
+footer nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+footer button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+footer button i {
+  font-size: 1.2rem;
+}
