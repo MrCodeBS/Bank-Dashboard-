@@ -113,6 +113,100 @@ main {
   padding: 0.5rem;
 }
 
+/* Player Stats Panel */
+.stats-panel {
+  margin: 2rem 0;
+  background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+  border: 2px solid #ff4757;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(255, 71, 87, 0.2);
+}
+
+.stats-panel h3 {
+  margin: 0 0 1.5rem 0;
+  color: #ff4757;
+  font-size: 1.2rem;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid rgba(255, 71, 87, 0.2);
+  transition: all 0.3s ease;
+}
+
+.stat-item:hover {
+  border-color: #ff4757;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 71, 87, 0.3);
+}
+
+.stat-icon {
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #ff4757, #ff6b6b);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.stat-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  word-break: break-all;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #ccc;
+  line-height: 1.2;
+}
+
+/* Responsive stats for smaller screens */
+@media (max-width: 380px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat-item {
+    padding: 0.75rem;
+  }
+  
+  .stat-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+  
+  .stat-value {
+    font-size: 1rem;
+  }
+}
+
 .card-section {
   margin: 2rem 0;
   background: #1a1a1a;
@@ -288,35 +382,50 @@ main {
 
 /* Investment Grid */
 .investment-grid {
-  display: grid;
+  display: grid !important;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+  margin: 2rem 0;
+  z-index: 10;
+  position: relative;
+  width: 100%;
+  visibility: visible;
 }
 
 .investment-card {
-  background: #1a1a1a;
+  background: #1a1a1a !important;
   border-radius: 16px;
   padding: 1.5rem;
   text-align: center;
   border: 2px solid #333;
   transition: all 0.3s ease;
   cursor: pointer;
+  position: relative;
+  z-index: 15;
+  min-height: 120px;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .investment-card:hover {
   border-color: #ff6b6b;
   transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
 }
 
 .shape {
   font-size: 3rem;
   margin-bottom: 1rem;
   color: #ff6b6b;
+  display: block;
+  line-height: 1;
 }
 
 .investment-card h4 {
   margin: 0 0 0.5rem 0;
   font-size: 1rem;
+  color: #fff;
 }
 
 .return {
@@ -550,4 +659,162 @@ footer nav {
   --squid-green: #2ed573;
   --squid-pink: #ff6b9d;
   --squid-blue: #3742fa;
+}
+
+/* Fun Game Animations */
+@keyframes crack {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1) rotate(2deg); }
+  50% { transform: scale(0.95) rotate(-2deg); }
+  75% { transform: scale(1.05) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes crackGrow {
+  from { height: 0; opacity: 0; }
+  to { height: 20px; opacity: 0.7; }
+}
+
+@keyframes challengePopIn {
+  from { 
+    opacity: 0; 
+    transform: scale(0.5) rotate(-10deg); 
+  }
+  to { 
+    opacity: 1; 
+    transform: scale(1) rotate(0deg); 
+  }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 71, 87, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 71, 87, 0.8), 0 0 30px rgba(255, 71, 87, 0.4); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes progressGlow {
+  from { box-shadow: 0 0 5px rgba(46, 213, 115, 0.3); }
+  to { box-shadow: 0 0 15px rgba(46, 213, 115, 0.6); }
+}
+
+@keyframes successPulse {
+  0% { background: #2ed573; transform: scale(1); }
+  50% { background: #7bed9f; transform: scale(1.05); }
+  100% { background: #2ed573; transform: scale(1); }
+}
+
+@keyframes errorShake {
+  0%, 100% { background: #ff4757; transform: translateX(0); }
+  25% { background: #ff3742; transform: translateX(-3px); }
+  75% { background: #ff5252; transform: translateX(3px); }
+}
+
+/* Interactive Game Elements */
+.investment-card:hover {
+  animation: glow 2s infinite;
+  transform: translateY(-4px) scale(1.02);
+  border-color: #ff6b6b;
+}
+
+.bridge-step:hover {
+  animation: pulse 1s infinite;
+  cursor: pointer;
+}
+
+.action-btn:active {
+  animation: shake 0.5s ease-in-out;
+}
+
+.wealth-circle:hover {
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+}
+
+.advice-item:hover {
+  background: rgba(255, 107, 107, 0.1);
+  transform: translateX(5px) scale(1.02);
+  border-left: 3px solid #ff6b6b;
+  cursor: pointer;
+}
+
+.card-header:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.insight-card:hover .insight-icon {
+  animation: bounce 0.6s ease;
+}
+
+.progress-fill {
+  animation: progressGlow 2s ease-in-out infinite alternate;
+}
+
+/* Game Button Styles */
+.game-toggle,
+.bridge-game-btn {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.game-toggle:hover,
+.bridge-game-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 71, 87, 0.3);
+}
+
+.game-toggle::before,
+.bridge-game-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.game-toggle:hover::before,
+.bridge-game-btn:hover::before {
+  left: 100%;
+}
+
+/* Success/Error States */
+.success {
+  animation: successPulse 0.6s ease-out;
+}
+
+.error {
+  animation: errorShake 0.6s ease-out;
+}
+
+/* Special Effects */
+.particle-effect {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ff6b6b;
+  border-radius: 50%;
+  animation: particle 1s ease-out forwards;
+}
+
+@keyframes particle {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0) translateY(-50px);
+  }
 }
