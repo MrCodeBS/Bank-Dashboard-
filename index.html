@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wealth Dashboard</title>
+  <title>SecureBank - Digital Banking</title>
 
   <!-- Font Awesome -->
   <link
@@ -13,49 +13,204 @@
 
   <!-- PWA Manifest -->
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#1a365d" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Home</h1>
-      <div class="profile-icon">
-        <i class="fas fa-user-circle"></i>
+      <div class="header-top">
+        <div class="bank-logo">
+          <i class="fas fa-university"></i>
+          <span>SecureBank</span>
+        </div>
+        <div class="header-icons">
+          <button class="notification-btn">
+            <i class="fas fa-bell"></i>
+            <span class="notification-badge">2</span>
+          </button>
+          <button class="profile-btn">
+            <i class="fas fa-user-circle"></i>
+          </button>
+        </div>
+      </div>
+      <div class="greeting">
+        <h1>Good Morning, Sarah</h1>
+        <p>Welcome back to your secure banking</p>
       </div>
     </header>
 
     <main>
-      <div class="wealth-circle">
-        <p>Total Wealth</p>
-        <h2 id="wealth-amount">45600000.00</h2>
-        <span>CHF</span>
-        <button id="toggle-visibility">
-          <i id="eye-icon" class="fas fa-eye"></i>
-        </button>
-      </div>
+      <!-- Account Overview -->
+      <section class="account-overview">
+        <div class="balance-card main-account">
+          <div class="card-header">
+            <h3>Primary Checking</h3>
+            <button id="toggle-visibility" class="toggle-btn">
+              <i id="eye-icon" class="fas fa-eye"></i>
+            </button>
+          </div>
+          <div class="balance-info">
+            <h2 id="main-balance" class="balance-amount">$24,586.50</h2>
+            <p class="account-number">Account •••• 4521</p>
+          </div>
+          <div class="card-actions">
+            <button class="action-btn transfer">Transfer</button>
+            <button class="action-btn deposit">Deposit</button>
+          </div>
+        </div>
 
-      <div class="card-section">
-        <h3>Your Alpian cards</h3>
-        <p>Easily create and manage your Alpian cards</p>
-      </div>
+        <div class="account-cards">
+          <div class="balance-card">
+            <div class="card-header">
+              <h4>Savings Account</h4>
+              <i class="fas fa-piggy-bank card-icon"></i>
+            </div>
+            <h3 id="savings-balance" class="balance-amount">$45,280.75</h3>
+            <p class="account-number">•••• 7834</p>
+          </div>
+          
+          <div class="balance-card">
+            <div class="card-header">
+              <h4>Credit Card</h4>
+              <i class="fas fa-credit-card card-icon"></i>
+            </div>
+            <h3 id="credit-balance" class="balance-amount text-red">-$1,247.30</h3>
+            <p class="account-number">•••• 9012</p>
+          </div>
+        </div>
+      </section>
 
+      <!-- Quick Actions -->
+      <section class="quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="actions-grid">
+          <button class="quick-action-btn">
+            <i class="fas fa-exchange-alt"></i>
+            <span>Transfer</span>
+          </button>
+          <button class="quick-action-btn">
+            <i class="fas fa-mobile-alt"></i>
+            <span>Pay Bills</span>
+          </button>
+          <button class="quick-action-btn">
+            <i class="fas fa-qrcode"></i>
+            <span>QR Pay</span>
+          </button>
+          <button class="quick-action-btn">
+            <i class="fas fa-plus"></i>
+            <span>Deposit</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Recent Transactions -->
+      <section class="recent-transactions">
+        <div class="section-header">
+          <h3>Recent Transactions</h3>
+          <button class="view-all-btn">View All</button>
+        </div>
+        <div class="transactions-list">
+          <div class="transaction-item">
+            <div class="transaction-icon expense">
+              <i class="fas fa-shopping-cart"></i>
+            </div>
+            <div class="transaction-details">
+              <h4>Grocery Store</h4>
+              <p>Today, 2:34 PM</p>
+            </div>
+            <div class="transaction-amount expense">-$127.45</div>
+          </div>
+          
+          <div class="transaction-item">
+            <div class="transaction-icon income">
+              <i class="fas fa-building"></i>
+            </div>
+            <div class="transaction-details">
+              <h4>Salary Deposit</h4>
+              <p>Yesterday, 9:00 AM</p>
+            </div>
+            <div class="transaction-amount income">+$3,250.00</div>
+          </div>
+          
+          <div class="transaction-item">
+            <div class="transaction-icon expense">
+              <i class="fas fa-gas-pump"></i>
+            </div>
+            <div class="transaction-details">
+              <h4>Shell Gas Station</h4>
+              <p>Dec 14, 6:15 PM</p>
+            </div>
+            <div class="transaction-amount expense">-$68.20</div>
+          </div>
+          
+          <div class="transaction-item">
+            <div class="transaction-icon transfer">
+              <i class="fas fa-exchange-alt"></i>
+            </div>
+            <div class="transaction-details">
+              <h4>Transfer to Savings</h4>
+              <p>Dec 13, 3:45 PM</p>
+            </div>
+            <div class="transaction-amount transfer">-$500.00</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Financial Insights -->
       <section class="insights">
-        <h3>Insights</h3>
-        <div class="insight-card">
-          <i class="fas fa-lock fa-2x"></i>
+        <h3>Financial Insights</h3>
+        <div class="insights-grid">
+          <div class="insight-card spending">
+            <div class="insight-icon">
+              <i class="fas fa-chart-pie"></i>
+            </div>
+            <div class="insight-content">
+              <h4>Monthly Spending</h4>
+              <p>$2,847 this month</p>
+              <span class="insight-trend down">-12% vs last month</span>
+            </div>
+          </div>
+          
+          <div class="insight-card goals">
+            <div class="insight-icon">
+              <i class="fas fa-target"></i>
+            </div>
+            <div class="insight-content">
+              <h4>Savings Goal</h4>
+              <p>84% to vacation fund</p>
+              <span class="insight-trend up">$420 to go</span>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
+    </main>
+
     <footer>
       <nav>
-        <button><i class="fas fa-home"></i><br>Home</button>
-        <button><i class="fas fa-wallet"></i><br>Cash</button>
-        <button><i class="fas fa-chart-line"></i><br>Investments</button>
-        <button><i class="fas fa-piggy-bank"></i><br>Savings</button>
-        <button><i class="fas fa-user-tie"></i><br>Advisory</button>
+        <button class="nav-btn active">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </button>
+        <button class="nav-btn">
+          <i class="fas fa-credit-card"></i>
+          <span>Cards</span>
+        </button>
+        <button class="nav-btn">
+          <i class="fas fa-exchange-alt"></i>
+          <span>Transfer</span>
+        </button>
+        <button class="nav-btn">
+          <i class="fas fa-chart-line"></i>
+          <span>Invest</span>
+        </button>
+        <button class="nav-btn">
+          <i class="fas fa-cog"></i>
+          <span>More</span>
+        </button>
       </nav>
     </footer>
   </div>

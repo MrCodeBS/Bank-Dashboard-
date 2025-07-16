@@ -1,11 +1,11 @@
 {
-  "name": "Wealth Dashboard",
-  "short_name": "Wealth",
+  "name": "SecureBank - Digital Banking",
+  "short_name": "SecureBank",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
-  "description": "Your personal wealth dashboard",
+  "background_color": "#1a365d",
+  "theme_color": "#1a365d",
+  "description": "Secure digital banking experience with modern features",
   "icons": [
     {
       "src": "icon-192.png",
@@ -13,7 +13,7 @@
       "type": "image/png"
     },
     {
-      "src": "icons/icon-128x128.png",
+      "src": "icon-128x128.png",
       "sizes": "128x128",
       "type": "image/png"
     },
@@ -22,5 +22,9 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "categories": ["finance", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "orientation": "portrait"
 }
