@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SecureBank - Digital Banking</title>
+  <title>Wealth Dashboard</title>
 
   <!-- Font Awesome -->
   <link
@@ -13,203 +13,189 @@
 
   <!-- PWA Manifest -->
   <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#1a365d" />
+  <meta name="theme-color" content="#000000" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
     <header>
-      <div class="header-top">
-        <div class="bank-logo">
-          <i class="fas fa-university"></i>
-          <span>SecureBank</span>
-        </div>
-        <div class="header-icons">
-          <button class="notification-btn">
-            <i class="fas fa-bell"></i>
-            <span class="notification-badge">2</span>
-          </button>
-          <button class="profile-btn">
-            <i class="fas fa-user-circle"></i>
-          </button>
-        </div>
+      <div class="header-left">
+        <button class="help-btn">
+          <i class="fas fa-question-circle"></i>
+        </button>
       </div>
-      <div class="greeting">
-        <h1>Good Morning, Sarah</h1>
-        <p>Welcome back to your secure banking</p>
+      <h1 id="page-title">Home</h1>
+      <div class="profile-icon">
+        <i class="fas fa-user-circle"></i>
       </div>
     </header>
 
-    <main>
-      <!-- Account Overview -->
-      <section class="account-overview">
-        <div class="balance-card main-account">
+    <main id="main-content">
+      <!-- Home View -->
+      <div id="home-view" class="view active">
+        <div class="wealth-circle">
+          <p>Total Wealth</p>
+          <h2 id="wealth-amount">456.00</h2>
+          <span>CHF</span>
+          <button id="toggle-visibility">
+            <i id="eye-icon" class="fas fa-eye"></i>
+          </button>
+        </div>
+
+        <div class="card-section">
           <div class="card-header">
-            <h3>Primary Checking</h3>
-            <button id="toggle-visibility" class="toggle-btn">
-              <i id="eye-icon" class="fas fa-eye"></i>
+            <div class="card-icon">
+              <i class="fas fa-credit-card"></i>
+            </div>
+            <div class="card-content">
+              <h3>Your Squid Game cards</h3>
+              <p>Easily create and manage your Player cards</p>
+            </div>
+            <button class="close-btn">
+              <i class="fas fa-times"></i>
             </button>
           </div>
-          <div class="balance-info">
-            <h2 id="main-balance" class="balance-amount">$24,586.50</h2>
-            <p class="account-number">Account •••• 4521</p>
-          </div>
-          <div class="card-actions">
-            <button class="action-btn transfer">Transfer</button>
-            <button class="action-btn deposit">Deposit</button>
-          </div>
         </div>
 
-        <div class="account-cards">
+        <section class="insights">
+          <h3>Insights</h3>
+          <div class="insight-cards">
+            <div class="insight-card security">
+              <div class="insight-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <div class="insight-content">
+                <h4>Security Status</h4>
+                <p>Your account is protected</p>
+              </div>
+            </div>
+            <div class="insight-card investments">
+              <div class="insight-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="insight-content">
+                <h4>Market Performance</h4>
+                <p>+2.3% this week</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Cash View -->
+      <div id="cash-view" class="view">
+        <div class="game-section">
+          <h2>💰 Red Light, Green Light Savings</h2>
           <div class="balance-card">
-            <div class="card-header">
-              <h4>Savings Account</h4>
-              <i class="fas fa-piggy-bank card-icon"></i>
-            </div>
-            <h3 id="savings-balance" class="balance-amount">$45,280.75</h3>
-            <p class="account-number">•••• 7834</p>
+            <h3>Available Cash</h3>
+            <div class="amount">₩456,000,000</div>
+            <p class="subtitle">Player #456 Balance</p>
           </div>
-          
-          <div class="balance-card">
-            <div class="card-header">
-              <h4>Credit Card</h4>
-              <i class="fas fa-credit-card card-icon"></i>
-            </div>
-            <h3 id="credit-balance" class="balance-amount text-red">-$1,247.30</h3>
-            <p class="account-number">•••• 9012</p>
+          <div class="actions">
+            <button class="action-btn green">Deposit</button>
+            <button class="action-btn red">Withdraw</button>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Quick Actions -->
-      <section class="quick-actions">
-        <h3>Quick Actions</h3>
-        <div class="actions-grid">
-          <button class="quick-action-btn">
-            <i class="fas fa-exchange-alt"></i>
-            <span>Transfer</span>
-          </button>
-          <button class="quick-action-btn">
-            <i class="fas fa-mobile-alt"></i>
-            <span>Pay Bills</span>
-          </button>
-          <button class="quick-action-btn">
-            <i class="fas fa-qrcode"></i>
-            <span>QR Pay</span>
-          </button>
-          <button class="quick-action-btn">
-            <i class="fas fa-plus"></i>
-            <span>Deposit</span>
-          </button>
+      <!-- Investments View -->
+      <div id="investments-view" class="view">
+        <div class="game-section">
+          <h2>🎯 Honeycomb Investment Game</h2>
+          <div class="investment-grid">
+            <div class="investment-card">
+              <div class="shape circle">●</div>
+              <h4>Conservative</h4>
+              <div class="return">+3.2%</div>
+            </div>
+            <div class="investment-card">
+              <div class="shape triangle">▲</div>
+              <h4>Moderate</h4>
+              <div class="return">+8.7%</div>
+            </div>
+            <div class="investment-card">
+              <div class="shape star">★</div>
+              <h4>Aggressive</h4>
+              <div class="return">+15.1%</div>
+            </div>
+            <div class="investment-card">
+              <div class="shape umbrella">☂</div>
+              <h4>High Risk</h4>
+              <div class="return">+24.9%</div>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Recent Transactions -->
-      <section class="recent-transactions">
-        <div class="section-header">
-          <h3>Recent Transactions</h3>
-          <button class="view-all-btn">View All</button>
-        </div>
-        <div class="transactions-list">
-          <div class="transaction-item">
-            <div class="transaction-icon expense">
-              <i class="fas fa-shopping-cart"></i>
+      <!-- Savings View -->
+      <div id="savings-view" class="view">
+        <div class="game-section">
+          <h2>🏦 Glass Bridge Savings</h2>
+          <div class="savings-progress">
+            <div class="bridge-container">
+              <div class="bridge-step completed">Step 1</div>
+              <div class="bridge-step completed">Step 2</div>
+              <div class="bridge-step current">Step 3</div>
+              <div class="bridge-step">Step 4</div>
+              <div class="bridge-step">Goal</div>
             </div>
-            <div class="transaction-details">
-              <h4>Grocery Store</h4>
-              <p>Today, 2:34 PM</p>
+            <div class="progress-info">
+              <h3>Savings Goal Progress</h3>
+              <div class="progress-amount">₩300,000 / ₩500,000</div>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 60%"></div>
+              </div>
             </div>
-            <div class="transaction-amount expense">-$127.45</div>
-          </div>
-          
-          <div class="transaction-item">
-            <div class="transaction-icon income">
-              <i class="fas fa-building"></i>
-            </div>
-            <div class="transaction-details">
-              <h4>Salary Deposit</h4>
-              <p>Yesterday, 9:00 AM</p>
-            </div>
-            <div class="transaction-amount income">+$3,250.00</div>
-          </div>
-          
-          <div class="transaction-item">
-            <div class="transaction-icon expense">
-              <i class="fas fa-gas-pump"></i>
-            </div>
-            <div class="transaction-details">
-              <h4>Shell Gas Station</h4>
-              <p>Dec 14, 6:15 PM</p>
-            </div>
-            <div class="transaction-amount expense">-$68.20</div>
-          </div>
-          
-          <div class="transaction-item">
-            <div class="transaction-icon transfer">
-              <i class="fas fa-exchange-alt"></i>
-            </div>
-            <div class="transaction-details">
-              <h4>Transfer to Savings</h4>
-              <p>Dec 13, 3:45 PM</p>
-            </div>
-            <div class="transaction-amount transfer">-$500.00</div>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- Financial Insights -->
-      <section class="insights">
-        <h3>Financial Insights</h3>
-        <div class="insights-grid">
-          <div class="insight-card spending">
-            <div class="insight-icon">
-              <i class="fas fa-chart-pie"></i>
+      <!-- Advisory View -->
+      <div id="advisory-view" class="view">
+        <div class="game-section">
+          <h2>🎭 Front Man Advisory</h2>
+          <div class="advisor-card">
+            <div class="advisor-avatar">
+              <i class="fas fa-user-secret"></i>
             </div>
-            <div class="insight-content">
-              <h4>Monthly Spending</h4>
-              <p>$2,847 this month</p>
-              <span class="insight-trend down">-12% vs last month</span>
+            <h3>Your Personal Financial Advisor</h3>
+            <div class="advice-list">
+              <div class="advice-item">
+                <i class="fas fa-check-circle"></i>
+                <span>Diversify your portfolio like the games</span>
+              </div>
+              <div class="advice-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>High-risk investments require strategy</span>
+              </div>
+              <div class="advice-item">
+                <i class="fas fa-lightbulb"></i>
+                <span>Consider long-term savings goals</span>
+              </div>
             </div>
-          </div>
-          
-          <div class="insight-card goals">
-            <div class="insight-icon">
-              <i class="fas fa-target"></i>
-            </div>
-            <div class="insight-content">
-              <h4>Savings Goal</h4>
-              <p>84% to vacation fund</p>
-              <span class="insight-trend up">$420 to go</span>
-            </div>
+            <button class="contact-advisor">Contact Advisor</button>
           </div>
         </div>
-      </section>
-    </main>
-
+      </div>
     </main>
 
     <footer>
       <nav>
-        <button class="nav-btn active">
-          <i class="fas fa-home"></i>
-          <span>Home</span>
+        <button class="nav-btn active" data-view="home">
+          <i class="fas fa-home"></i><br>Home
         </button>
-        <button class="nav-btn">
-          <i class="fas fa-credit-card"></i>
-          <span>Cards</span>
+        <button class="nav-btn" data-view="cash">
+          <i class="fas fa-wallet"></i><br>Cash
         </button>
-        <button class="nav-btn">
-          <i class="fas fa-exchange-alt"></i>
-          <span>Transfer</span>
+        <button class="nav-btn" data-view="investments">
+          <i class="fas fa-chart-line"></i><br>Investments
         </button>
-        <button class="nav-btn">
-          <i class="fas fa-chart-line"></i>
-          <span>Invest</span>
+        <button class="nav-btn" data-view="savings">
+          <i class="fas fa-piggy-bank"></i><br>Savings
         </button>
-        <button class="nav-btn">
-          <i class="fas fa-cog"></i>
-          <span>More</span>
+        <button class="nav-btn" data-view="advisory">
+          <i class="fas fa-user-tie"></i><br>Advisory
         </button>
       </nav>
     </footer>

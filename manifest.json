@@ -1,11 +1,11 @@
 {
-  "name": "SecureBank - Digital Banking",
-  "short_name": "SecureBank",
+  "name": "Squid Game Wealth Dashboard",
+  "short_name": "SquidWealth",
   "start_url": ".",
   "display": "standalone",
-  "background_color": "#1a365d",
-  "theme_color": "#1a365d",
-  "description": "Secure digital banking experience with modern features",
+  "background_color": "#000000",
+  "theme_color": "#ff4757",
+  "description": "Your personal Squid Game themed wealth dashboard - May the odds be in your financial favor",
   "icons": [
     {
       "src": "icon-192.png",
@@ -23,8 +23,13 @@
       "type": "image/png"
     }
   ],
-  "categories": ["finance", "productivity"],
-  "lang": "en",
-  "dir": "ltr",
-  "orientation": "portrait"
+  "categories": ["finance", "lifestyle", "entertainment"],
+  "screenshots": [
+    {
+      "src": "screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ]
 }
