@@ -6,6 +6,6 @@ let isVisible = true;
 
 toggleBtn.addEventListener('click', () => {
   isVisible = !isVisible;
-  wealthAmount.textContent = isVisible ? '500.00' : '•••••';
+  wealthAmount.textContent = isVisible ? '4560000.00' : '••••••••••';
   eyeIcon.className = isVisible ? 'fas fa-eye' : 'fas fa-eye-slash';
 });
