@@ -6,7 +6,7 @@ body {
   margin: 0;
   background: #000;
   color: #fff;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   overflow-x: hidden;
 }
 
@@ -66,8 +66,14 @@ main {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Home View Styles */
@@ -191,17 +197,17 @@ main {
   .stats-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .stat-item {
     padding: 0.75rem;
   }
-  
+
   .stat-icon {
     width: 35px;
     height: 35px;
     font-size: 1.2rem;
   }
-  
+
   .stat-value {
     font-size: 1rem;
   }
@@ -434,78 +440,294 @@ main {
   color: #2ed573;
 }
 
-/* Savings Progress */
-.savings-progress {
-  background: #1a1a1a;
+/* Real Glass Bridge Game */
+.bridge-game-container {
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
   border-radius: 20px;
   padding: 2rem;
+  border: 2px solid #333;
 }
 
-.bridge-container {
-  display: flex;
-  justify-content: space-between;
+.game-instructions {
+  text-align: center;
   margin-bottom: 2rem;
+  background: rgba(255, 71, 87, 0.1);
+  padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid #ff4757;
+}
+
+.game-instructions h3 {
+  margin: 0 0 0.5rem 0;
+  color: #ff4757;
+}
+
+.game-instructions p {
+  margin: 0.5rem 0;
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+.player-position {
+  margin: 1rem 0;
+}
+
+.player-indicator {
+  display: inline-block;
+  background: linear-gradient(45deg, #ff4757, #ff6b6b);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  animation: playerPulse 2s infinite;
+}
+
+@keyframes playerPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.real-bridge-container {
+  perspective: 1000px;
+  min-height: 600px;
+  position: relative;
+  background: 
+    linear-gradient(180deg, 
+      rgba(10, 10, 40, 0.8) 0%, 
+      rgba(0, 0, 0, 0.9) 100%
+    );
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  margin: 2rem 0;
+}
+
+.bridge-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
   position: relative;
 }
 
-.bridge-container::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #333;
-  z-index: 1;
+.glass-panel {
+  width: 80px;
+  height: 40px;
+  background: linear-gradient(135deg, 
+    rgba(135, 206, 235, 0.3) 0%,
+    rgba(173, 216, 230, 0.5) 50%,
+    rgba(135, 206, 235, 0.3) 100%
+  );
+  border: 2px solid rgba(135, 206, 235, 0.6);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  backdrop-filter: blur(5px);
+  box-shadow: 
+    0 4px 15px rgba(135, 206, 235, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-.bridge-step {
-  width: 60px;
-  height: 60px;
+.glass-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 25px rgba(135, 206, 235, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-color: rgba(135, 206, 235, 0.9);
+}
+
+.glass-panel.safe {
+  background: linear-gradient(135deg, 
+    rgba(46, 213, 115, 0.3) 0%,
+    rgba(46, 213, 115, 0.5) 50%,
+    rgba(46, 213, 115, 0.3) 100%
+  );
+  border-color: #2ed573;
+  box-shadow: 0 4px 15px rgba(46, 213, 115, 0.4);
+}
+
+.glass-panel.broken {
+  background: linear-gradient(135deg, 
+    rgba(255, 71, 87, 0.3) 0%,
+    rgba(255, 71, 87, 0.5) 50%,
+    rgba(255, 71, 87, 0.3) 100%
+  );
+  border-color: #ff4757;
+  animation: shatter 0.6s ease-out;
+  transform: scale(0.8);
+  opacity: 0.5;
+}
+
+@keyframes shatter {
+  0% { transform: scale(1) rotate(0deg); }
+  25% { transform: scale(1.1) rotate(-5deg); }
+  50% { transform: scale(0.9) rotate(5deg); }
+  100% { transform: scale(0.8) rotate(0deg); opacity: 0.5; }
+}
+
+.glass-panel.current-choice {
+  border-color: #ffa502;
+  box-shadow: 0 0 20px rgba(255, 165, 2, 0.6);
+  animation: glow 1s infinite alternate;
+}
+
+@keyframes glow {
+  from { box-shadow: 0 0 20px rgba(255, 165, 2, 0.6); }
+  to { box-shadow: 0 0 30px rgba(255, 165, 2, 0.9); }
+}
+
+.glass-surface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, 
+    transparent 30%, 
+    rgba(255, 255, 255, 0.1) 50%, 
+    transparent 70%
+  );
+  border-radius: 6px;
+  animation: glassShine 3s infinite;
+}
+
+@keyframes glassShine {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+.panel-number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.bridge-gap {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.4) 100%
+  );
   border-radius: 50%;
-  background: #333;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
   position: relative;
-  z-index: 2;
-  border: 3px solid #333;
 }
 
-.bridge-step.completed {
-  background: #2ed573;
-  border-color: #2ed573;
-}
-
-.bridge-step.current {
-  background: #ff6b6b;
-  border-color: #ff6b6b;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-.progress-info h3 {
-  margin: 0 0 1rem 0;
-  text-align: center;
-}
-
-.progress-amount {
-  text-align: center;
+.bridge-gap::after {
+  content: "💀";
   font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
+  opacity: 0.3;
 }
 
-.progress-bar {
-  background: #333;
-  border-radius: 10px;
-  height: 8px;
-  overflow: hidden;
+.starting-platform {
+  background: linear-gradient(135deg, #333, #555);
+  border: 2px solid #666;
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.platform-text {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.bridge-game-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.stat-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  color: #ccc;
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  display: block;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.bridge-controls {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.bridge-start-btn, .bridge-reset-btn {
+  background: linear-gradient(45deg, #ff4757, #ff6b6b);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0.5rem;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+}
+
+.bridge-start-btn:hover, .bridge-reset-btn:hover {
+  background: linear-gradient(45deg, #ff3742, #ff5252);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 71, 87, 0.4);
+}
+
+.bridge-reset-btn {
+  background: linear-gradient(45deg, #666, #888);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.bridge-reset-btn:hover {
+  background: linear-gradient(45deg, #555, #777);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+  .glass-panel {
+    width: 60px;
+    height: 30px;
+  }
+  
+  .bridge-gap {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .bridge-game-stats {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .real-bridge-container {
+    padding: 1rem 0.5rem;
+    min-height: 400px;
+  }
 }
 
 .progress-fill {
@@ -624,9 +846,18 @@ footer nav {
 }
 
 @keyframes bounce {
-  0%, 20%, 60%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-8px); }
-  80% { transform: translateY(-4px); }
+  0%,
+  20%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-8px);
+  }
+  80% {
+    transform: translateY(-4px);
+  }
 }
 
 /* Responsive Design */
@@ -634,12 +865,12 @@ footer nav {
   .investment-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .bridge-container {
     flex-wrap: wrap;
     gap: 1rem;
   }
-  
+
   .bridge-step {
     width: 50px;
     height: 50px;
@@ -663,60 +894,118 @@ footer nav {
 
 /* Fun Game Animations */
 @keyframes crack {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.1) rotate(2deg); }
-  50% { transform: scale(0.95) rotate(-2deg); }
-  75% { transform: scale(1.05) rotate(1deg); }
-  100% { transform: scale(1) rotate(0deg); }
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1.1) rotate(2deg);
+  }
+  50% {
+    transform: scale(0.95) rotate(-2deg);
+  }
+  75% {
+    transform: scale(1.05) rotate(1deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
 
 @keyframes crackGrow {
-  from { height: 0; opacity: 0; }
-  to { height: 20px; opacity: 0.7; }
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 20px;
+    opacity: 0.7;
+  }
 }
 
 @keyframes challengePopIn {
-  from { 
-    opacity: 0; 
-    transform: scale(0.5) rotate(-10deg); 
+  from {
+    opacity: 0;
+    transform: scale(0.5) rotate(-10deg);
   }
-  to { 
-    opacity: 1; 
-    transform: scale(1) rotate(0deg); 
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
   }
 }
 
 @keyframes glow {
-  0%, 100% { box-shadow: 0 0 5px rgba(255, 71, 87, 0.5); }
-  50% { box-shadow: 0 0 20px rgba(255, 71, 87, 0.8), 0 0 30px rgba(255, 71, 87, 0.4); }
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(255, 71, 87, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 71, 87, 0.8), 0 0 30px rgba(255, 71, 87, 0.4);
+  }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  75% { transform: translateX(5px); }
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
 }
 
 @keyframes sparkle {
-  0%, 100% { opacity: 0; transform: scale(0); }
-  50% { opacity: 1; transform: scale(1); }
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes progressGlow {
-  from { box-shadow: 0 0 5px rgba(46, 213, 115, 0.3); }
-  to { box-shadow: 0 0 15px rgba(46, 213, 115, 0.6); }
+  from {
+    box-shadow: 0 0 5px rgba(46, 213, 115, 0.3);
+  }
+  to {
+    box-shadow: 0 0 15px rgba(46, 213, 115, 0.6);
+  }
 }
 
 @keyframes successPulse {
-  0% { background: #2ed573; transform: scale(1); }
-  50% { background: #7bed9f; transform: scale(1.05); }
-  100% { background: #2ed573; transform: scale(1); }
+  0% {
+    background: #2ed573;
+    transform: scale(1);
+  }
+  50% {
+    background: #7bed9f;
+    transform: scale(1.05);
+  }
+  100% {
+    background: #2ed573;
+    transform: scale(1);
+  }
 }
 
 @keyframes errorShake {
-  0%, 100% { background: #ff4757; transform: translateX(0); }
-  25% { background: #ff3742; transform: translateX(-3px); }
-  75% { background: #ff5252; transform: translateX(3px); }
+  0%,
+  100% {
+    background: #ff4757;
+    transform: translateX(0);
+  }
+  25% {
+    background: #ff3742;
+    transform: translateX(-3px);
+  }
+  75% {
+    background: #ff5252;
+    transform: translateX(3px);
+  }
 }
 
 /* Interactive Game Elements */
@@ -774,13 +1063,18 @@ footer nav {
 
 .game-toggle::before,
 .bridge-game-btn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.5s;
 }
 
